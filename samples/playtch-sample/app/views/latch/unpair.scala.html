@@ -1,0 +1,17 @@
+@import helper._
+@import helper.twitterBootstrap._
+
+@title = {
+    Latch - Unpair
+}
+
+
+@main(title, nav = "latch") {
+    @helper.form(action = routes.PairController.unpair) {
+        <legend>Your account is paired</legend>
+
+        <div class="actions">
+            <input type="submit" class="btn btn-danger" value="Click to unpair your account">
+        </div>
+    }
+}

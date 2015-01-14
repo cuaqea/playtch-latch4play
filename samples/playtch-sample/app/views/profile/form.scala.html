@@ -1,0 +1,123 @@
+@(userForm: Form[entities.User])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@title = {
+    My profile <small>Your user information</small>
+}
+
+@main(title, nav = "profile") {
+    
+    @if(userForm.hasErrors) {
+        <div class="alert-message error">
+            <p><strong>Oops</strong> Please fix all errors</p>
+        </div>
+    }
+    
+    @helper.form(action = routes.ProfileController.submit, 'id -> "form") {
+        
+        <fieldset>
+            <legend>Access information</legend>
+
+            @inputText(
+                userForm("username"),
+                '_label -> "Username",
+                'readonly -> "readonly"
+            )
+            
+            @inputText(
+                userForm("email"),
+                '_label -> "E-mail"
+            )
+            
+            @inputPassword(
+                userForm("password"),
+                '_label -> "Password"
+            )
+            
+        </fieldset>
+
+        <fieldset>
+            <legend>Personal information</legend>
+
+            @inputText(
+            userForm("profile.country"),
+            '_label -> "Country"
+            )
+
+            @inputText(
+            userForm("profile.address"),
+            '_label -> "Address"
+            )
+
+            @inputText(
+            userForm("profile.age"),
+            '_label -> "Age"
+            )
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Edit">
+        </div>
+        
+    }
+    
+    <script type="text/javascript" charset="utf-8">
+        
+        $('.removeProfile').live('click', function(e) {
+            $(this).parents('.profile').remove()
+            renumber()
+        })
+        
+        $('.removePhone').live('click', function(e) {
+            var phones = $(this).parents('.phones')
+            $(this).parents('.phone').remove()
+            renumber(phones)
+        })
+        
+        $('.addPhone').live('click', function(e) {
+            var phones = $(this).parents('.phones')
+            var template = $('.phone_template', phones)
+            template.before('<div class="clearfix phone">' + template.html() + '</div>')
+            renumber(phones)
+        })
+        
+        $('.addProfile').live('click', function(e) {
+            var template = $('.profile_template')
+            template.before('<div class="twipsies well profile">' + template.html() + '</div>')
+            renumber()
+        })
+        
+        $('#form').submit(function() {
+            $('.phone_template').remove()
+            $('.profile_template').remove()
+        })
+        
+        // -- renumber fields
+        
+        // Rename fields to have a coherent payload like:
+        //
+        // informations[0].label
+        // informations[0].email
+        // informations[0].phones[0]
+        // informations[0].phones[1]
+        // ...
+        //
+        // This is probably not the easiest way to do it. A jQuery plugin would help.
+        
+        var renumber = function(phones) {
+            $('.profile').each(function(i) {
+                $('input', this).each(function() {
+                    $(this).attr('name', $(this).attr('name').replace(/informations\[.+?\]/g, 'informations[' + i + ']'))
+                })
+                $('.phone input', this).each(function(i) {
+                    $(this).attr('name', $(this).attr('name').replace(/phones\[.+\]/g, 'phones[' + i + ']'))
+                })
+            })
+        }
+        
+    </script>
+    
+}
