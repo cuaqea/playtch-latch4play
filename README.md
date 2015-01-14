@@ -27,7 +27,10 @@ A. Publish the plugin locally. If you want to publish local this plugin, you hav
 	clean
 	publishLocal
 ```
-
+And also, add this dependency to your build.sbt
+```
+	"com.cuaqea.playtch" % "playtch-latch4play_2.10" % "1.0"
+```
 B. Using in your Play Framework project (RECOMMENDED)
 You need to add the following to your Play build.sbt
 ```
@@ -66,6 +69,9 @@ There are two ways of using Playtch in your source code:
 ### JavaDoc ###
 Published On:
 http://cuaqea.github.io/playtch-latch4play/
+
+### YouTube demo video showing Playtch ###
+http://goo.gl/pKMv8h
 
 ### Examples ###
 #### 1. Latching an app ####
