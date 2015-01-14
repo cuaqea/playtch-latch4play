@@ -17,7 +17,6 @@ public interface ObtainPairingKey {
      *
      * So our getPairingKey implementation could be:
      *
-     * @Override
      * public String getPairingKey(Http.Context context) {
      *     return context.request().body().asFormUrlEncoded().get("key")[0].toString();
      * }

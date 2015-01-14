@@ -21,7 +21,6 @@ public interface ObtainLatchId {
      *
      * So our getLatchId implementation could be:
      *
-     * @Override
      * public String getLatchId(Http.Context context) {
      *     String userId = context.request().body().asFormUrlEncoded().get("username")[0].toString();
      *     UserDataSource userDataSource = new UserDataSource();
