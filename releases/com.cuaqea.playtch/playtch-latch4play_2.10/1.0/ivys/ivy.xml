@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-	<info organisation="com.cuaqea.playtch" module="playtch-latch4play_2.10" revision="1.0" status="release" publication="20150114152258">
+	<info organisation="com.cuaqea.playtch" module="playtch-latch4play_2.10" revision="1.0" status="release" publication="20150114180308">
 		<description>
 		playtch-latch4play
 		</description>
