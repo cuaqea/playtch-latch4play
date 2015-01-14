@@ -42,7 +42,7 @@ you need to add the following to your Play build.sbt
        // other dependencies
        ... % ... % ...
        //
-       "com.cuaqea.playtch" %% "playtch-latch4play" % "1.0"
+       "com.cuaqea.playtch" %% "playtch-latch4play_2.10" % "1.0"
      )
 
 ```
