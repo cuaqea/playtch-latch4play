@@ -29,7 +29,20 @@ cuaqea/playtch-dummy-application
 ```
 
 * Using in your Play Framework project
-Add this line in your build.sbt file
+you need to add the following to your Play build.sbt
 ```
-	  "com.cuaqea.playtch" %% "playtch-latch4play" % "1.0"
+
+     resolvers += Resolver.url(
+            "Playtch Repository",
+            url("https://github.com/cuaqea/playtch-latch4play/tree/master/releases")
+        )(Resolver.ivyStylePatterns)
+
+
+     libraryDependencies ++= Seq(
+       // other dependencies
+       ... % ... % ...
+       //
+       "com.cuaqea.playtch" %% "playtch-latch4play" % "1.0"
+     )
+
 ```
