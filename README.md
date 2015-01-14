@@ -63,6 +63,10 @@ There are two ways of using Playtch in your source code:
   * @LatchPair: to perform pairing
   * @LatchUnpair: to perform unpairing
 
+### JavaDoc ###
+Published On:
+http://cuaqea.github.io/playtch-latch4play/
+
 ### Examples ###
 #### 1. Latching an app ####
 * Imports
