@@ -34,7 +34,7 @@ you need to add the following to your Play build.sbt
 
      resolvers += Resolver.url(
             "Playtch Repository",
-            url("https://github.com/cuaqea/playtch-latch4play/tree/master/releases")
+            url("http://cuaqea.github.io/playtch-latch4play/releases/")
         )(Resolver.ivyStylePatterns)
 
 
