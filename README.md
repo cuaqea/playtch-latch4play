@@ -1,13 +1,13 @@
-# PLAYTCH: LATCH4PLAY
-## A LATCH PLAY FRAMEWORK PLUGIN ###
+# PLAYTCH - LATCH4PLAY.
+ A LATCH PLAY FRAMEWORK PLUGIN #
 
-### INTRODUCTION ####
+### INTRODUCTION ###
 Playtch is a plugin/module for Play Framework projects that wanted to implement in an easy way Latch (http://latch.elevenpaths.com)
 
 Playtch includes a dummy application presenting a typical web where a user can sign up, login and edit its profile.
 https://github.com/cuaqea/playtch-latch4play/tree/master/samples/playtch-sample
 
-### PREREQUISITES ####
+### PREREQUISITES ###
 
 * Play Framework 2.2.2 or above.
 
@@ -20,8 +20,8 @@ https://github.com/cuaqea/playtch-latch4play/tree/master/samples/playtch-sample
 	sudo keytool -import -noprompt -trustcacerts -alias CACertificate -file ca.pem -keystore "/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home/jre/lib/security/cacerts" -storepass changeit
 ```
 
-### USING THE PLUGIN ####
-#### Add plugin to your project
+### USING THE PLUGIN ###
+#### Add plugin to your project ####
 A. Publish the plugin locally. If you want to publish local this plugin, you have to exec play and type this commands
 ```
 	clean
@@ -53,20 +53,18 @@ In both cases, you need to specify your appId and secretKey in your project appl
     latch.secretKey = "YOU_APP_SECRET_KEY"
 ```
 
-#### Using in your code
+#### Using in your code ####
 There are two ways of using Playtch in your source code:
-  Using notations (RECOMMENED)
- - Calling LatchController directly
+* Calling LatchController directly
 
-* Using notations
+* Using notations (RECOMMENDED)
   * @LachCheckStatus: to check a Latch application status
   * @LatchCheckOperationStatus: to check a specific Latch operation
   * @LatchPair: to perform pairing
   * @LatchUnpair: to perform unpairing
 
-#### Examples
-===
-##### Login
+#### Examples ####
+##### Login #####
 ---
 * Imports
 ```
