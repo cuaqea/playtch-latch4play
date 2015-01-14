@@ -59,23 +59,23 @@ There are two ways of using Playtch in your source code:
  - Calling LatchController directly
 
 * Using notations
-```
-    @LachCheckStatus: to check a Latch application status
-    @LatchCheckOperationStatus: to check a specific Latch operation
-    @LatchPair: to perform pairing
-    @LatchUnpair: to perform unpairing
-```
+  * @LachCheckStatus: to check a Latch application status
+  * @LatchCheckOperationStatus: to check a specific Latch operation
+  * @LatchPair: to perform pairing
+  * @LatchUnpair: to perform unpairing
 
 #### Examples
+===
 ##### Login
-** Imports
+---
+* Imports
 ```
     ...
     import actions.LatchCheckOperationStatus;
     import utils.factories.LatchIdFactory;
     ...
 ```
-** Latching your method
+* Latching your method
 ```
    @LatchCheckOperationStatus(value = "LATCH_LOGIN_OPERATION_ID", latchId = LatchIdFactory.class)
     public static Result submit() {
@@ -103,36 +103,36 @@ There are two ways of using Playtch in your source code:
 ```
 Note:
 you need to pass to the notation two arguments:
-*** value: String with your Latch operation id
-*** latchId: a class that implements a method call getLatchId. See the following example:
+* value: String with your Latch operation id
+* latchId: a class that implements a method call getLatchId. See the following example:
 ```
-...
-import latchid.ObtainLatchId;
-...
+    ...
+    import latchid.ObtainLatchId;
+    ...
 
-public class LatchIdFactory implements ObtainLatchId {
+    public class LatchIdFactory implements ObtainLatchId {
 
-    @Override
-    public String getLatchId(Http.Context context) {
-        // Get "username" from context. For example if we get from a form with an inputText called "username"
-        // and knowing that our User model has got a field called latchAccountId where we store the accountId returned
-        // after pairing:
-        String userId = context.request().body().asFormUrlEncoded().get("username")[0].toString();
-        UserDataSource userDataSource = new UserDataSource();
+        @Override
+        public String getLatchId(Http.Context context) {
+            // Get "username" from context. For example if we get from a form with an inputText called "username"
+            // and knowing that our User model has got a field called latchAccountId where we store the accountId returned
+            // after pairing:
+            String userId = context.request().body().asFormUrlEncoded().get("username")[0].toString();
+            UserDataSource userDataSource = new UserDataSource();
 
-        // Get full User by username
-        User user = userDataSource.getUser(userId);
+            // Get full User by username
+            User user = userDataSource.getUser(userId);
 
-        if (user != null) {
-            // Check if user is paired
-            if (!(user.latchAccountId.equals("null") || user.latchAccountId.equals(""))) {
-                // If paired, return its accountId
-                return user.latchAccountId;
+            if (user != null) {
+                // Check if user is paired
+                if (!(user.latchAccountId.equals("null") || user.latchAccountId.equals(""))) {
+                    // If paired, return its accountId
+                    return user.latchAccountId;
+                }
             }
+            // If not, returns null
+            return null;
         }
-        // If not, returns null
-        return null;
     }
-}
 ```
 
